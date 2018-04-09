@@ -1,0 +1,10 @@
+%YAML 1.2
+---
+default_browser: chrome
+
+ci_type: none
+
+screenshots:
+    on_failure: true
+    on_error: true
+    on_finish: false

@@ -1,0 +1,11 @@
+%YAML 1.2
+---
+type: chrome
+
+profiles:
+    darwin:
+    profile:
+
+grid filters:
+    platform: mac
+    version: 23.0.1

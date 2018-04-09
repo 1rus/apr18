@@ -1,0 +1,12 @@
+%YAML 1.2
+---
+timeout: 30
+
+executor:
+    host: 10.0.0.215
+    port: 5555
+    is grid: true
+
+proxy:
+    url:
+    type:
