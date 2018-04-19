@@ -5,6 +5,8 @@ from selenium.webdriver import FirefoxProfile
 from browsermobproxy import Client
 from framework.framedriver import FrameWebdriver
 from framework.exceptions import ProfileNotFound
+from selenium.webdriver.chrome.options import Options
+
 
 cap_map = {
     "firefox": DesiredCapabilities.FIREFOX.copy(),
@@ -65,6 +67,12 @@ class Browser(object):
         if "on_error" in all_conf["sframe"]["screenshots"]:
             if not all_conf["sframe"]["screenshots"]["on_error"]:
                 caps["webdriver.remote.quietExceptions"] = True
+
+        if "headless" in br_conf["profiles"].keys() and br_conf["profiles"]["headless"]:
+            chrome_options = Options()
+            chrome_options.add_argument("--headless")
+            caps = chrome_options.to_capabilities()
+            print("added headless to chrome")
 
         if "type" in all_conf["selenium"]["proxy"]\
                 and all_conf["selenium"]["proxy"]["type"] == "browsermob":

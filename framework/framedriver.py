@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from framework.exceptions import InvalidLocatorString
 from framework.webelement import WebElement
-
+import framework.exceptions
 
 
 class FrameWebdriver(webdriver.Remote):
@@ -11,7 +11,10 @@ class FrameWebdriver(webdriver.Remote):
         super(FrameWebdriver, self).__init__(**kwargs)
 
     def find_element_by_locator(self, locator):
-        locator_type, locator_value = locator.split('=')
+        locator_type = locator[:locator.find('=')]
+        if locator_type == '':
+            raise framework.exceptions.InvalidLocatorString(locator)
+        locator_value = locator[locator.find('=')+1:]
         if locator_type == 'id':
             return self.find_element_by_id(locator_value)
         elif locator_type == 'class':
@@ -28,7 +31,10 @@ class FrameWebdriver(webdriver.Remote):
 
 
     def find_elements_by_locator(self, locator):
-        locator_type, locator_value = locator.split('=')
+        locator_type = locator[:locator.find('=')]
+        if locator_type == '':
+            raise framework.exceptions.InvalidLocatorString(locator)
+        locator_value = locator[locator.find('=')+1:]
         if locator_type == 'id':
             elements = self.find_elements_by_id(locator_value)
         elif locator_type == 'class':

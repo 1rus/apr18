@@ -13,9 +13,7 @@ class Select(SeleniumSelect):
     def __set__(self, val):
         s = SeleniumSelect(self.driver.find_element_by_locator(self.locator))
         method = val[:val.find("=")]
-        print("method = ", method)
         value = val[val.find("=")+1:]
-        print("value = ", value)
         if method == "value":
             s.select_by_value(value)
         elif method == "index":
@@ -28,9 +26,7 @@ class Select(SeleniumSelect):
     def __get__(self):
         try:
             s = SeleniumSelect(self.driver.find_element_by_locator(self.locator))
-            print("select is - ", s)
-            e = s. first_selected_option
-            print("element - ", e, " and text is - ", str(e.text))
+            e = s.first_selected_option
             return str(e.text)
         except AttributeError:
             pass
