@@ -51,7 +51,6 @@ locators = {'main_search_field': 'css=input#twotabsearchtextbox',
             'results_rating': "css=div>div>span>span>a>i>span",
             'sort_by': "css=select[id='sort']",
             }
-results_dict = {}
 refine_search_dict = {}
 
 
@@ -209,6 +208,8 @@ titles, prices, ratings = get_results()
 print(len(titles), "\t", titles)
 print(len(prices), "\t", prices)
 print(len(ratings), "\t", ratings)
+results_dict = dict(zip(titles, zip(prices, ratings)))
+print(results_dict)
 #assert_that.assert_true(all(prices[i] <= prices[i+1] for i in range(len(prices)-1)))
 sort_by("text=Avg. Customer Review")
 time.sleep(20)
