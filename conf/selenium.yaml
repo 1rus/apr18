@@ -3,7 +3,7 @@
 timeout: 30
 
 executor:
-    host: 10.0.0.215
+    host: 172.17.0.3
     port: 5555
     is grid: true
 
