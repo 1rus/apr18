@@ -1,6 +1,6 @@
 FROM python:3.6
 
-LABEL maintainer "rusnichkin@gmail.com"
+LABEL maintainer "rus4ca@gmail.com"
 
 WORKDIR /tmp/app
 
