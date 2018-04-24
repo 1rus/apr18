@@ -4,6 +4,7 @@
 numpy==1.12.0
 PyYaml==3.12
 selenium==3.11
+browsermob-proxy==2.1.5
 
 # pytest
 pytest==3.2.3
