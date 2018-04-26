@@ -4,14 +4,13 @@ node ('master') {
         checkout scm
         sh '''echo "Docker environment:" &&
         docker --version &&
-        docker-compose --version'''
+        docker-compose --version &&
+        COMPOSE_FILE_LOC="docker-compose.test.yml" &&
+        TEST_CONTAINER_NAME="apr18" &&
+        COMPOSE_PROJECT_NAME_ORIGINAL="jenkinsbuild_${BUILD_TAG}" &&
+        COMPOSE_PROJECT_NAME=$(echo $COMPOSE_PROJECT_NAME_ORIGINAL | awk '{print tolower($0)}' | sed 's/[^a-z0-9]*//g') &&
+        TEST_CONTAINER_REF="${COMPOSE_PROJECT_NAME}_${TEST_CONTAINER_NAME}_1"'''
     }
-    def COMPOSE_FILE_LOC="docker-compose.test.yml"
-    def TEST_CONTAINER_NAME="apr18"
-    defCOMPOSE_PROJECT_NAME_ORIGINAL="jenkinsbuild_${BUILD_TAG}"
-    def COMPOSE_PROJECT_NAME=$(echo $COMPOSE_PROJECT_NAME_ORIGINAL | awk '{print tolower($0)}' | sed 's/[^a-z0-9]*//g')
-    def TEST_CONTAINER_REF="${COMPOSE_PROJECT_NAME}_${TEST_CONTAINER_NAME}_1"
-
     stage('build docker image'){
         sh '''docker-compose -f $COMPOSE_FILE_LOC \
                    -p $COMPOSE_PROJECT_NAME \
