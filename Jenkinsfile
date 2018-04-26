@@ -2,11 +2,10 @@ node ('master') {
     cleanWs()
     stage('checkout scm'){
         checkout scm
-        sh '''
-
-        echo "Docker environment:" &&
-        docker --version &&
-        docker-compose --version &&
+        sh 'echo "Docker environment:"'
+        sh'docker --version'
+        sh 'docker-compose --version'
+        sh'''
         COMPOSE_FILE_LOC="docker-compose.test.yml" &&
         TEST_CONTAINER_NAME="apr18" &&
         COMPOSE_PROJECT_NAME_ORIGINAL="jenkinsbuild_${BUILD_TAG}" &&
