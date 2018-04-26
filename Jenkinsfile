@@ -10,7 +10,7 @@ node ('master') {
             COMPOSE_FILE_LOC="docker-compose.test.yml"
             TEST_CONTAINER_NAME="apr18"
             COMPOSE_PROJECT_NAME_ORIGINAL="jenkinsbuild_${BUILD_TAG}"
-            COMPOSE_PROJECT_NAME=$(echo $COMPOSE_PROJECT_NAME_ORIGINAL | awk '{print tolower($0)}') | sed 's/[^a-z0-9]*//g'
+            COMPOSE_PROJECT_NAME=$(echo $COMPOSE_PROJECT_NAME_ORIGINAL | awk '{print tolower($0)}' | sed 's/[^a-z0-9]*//g')
             TEST_CONTAINER_REF="${COMPOSE_PROJECT_NAME}_${TEST_CONTAINER_NAME}_1"
             '''
     }
