@@ -13,7 +13,7 @@ node ('master') {
             COMPOSE_PROJECT_NAME=$(echo $COMPOSE_PROJECT_NAME_ORIGINAL | awk '{print tolower($0)}' | sed 's/[^a-z0-9]*//g'
             TEST_CONTAINER_REF="${COMPOSE_PROJECT_NAME}_${TEST_CONTAINER_NAME}_1"
             '''
-    }
+    }}
     stage('build docker image'){
         sh '''
             $DOCKER_COMPOSE/docker-compose -f $COMPOSE_FILE_LOC \
