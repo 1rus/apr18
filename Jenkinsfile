@@ -1,4 +1,4 @@
-node ('docker') {
+node ('master') {
     cleanWs()
     stage('checkout scm'){
         checkout scm
