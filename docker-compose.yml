@@ -16,5 +16,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.test
-    links:
+    depends_on:
       - hub
+      - chrome
+      - firefox
+
