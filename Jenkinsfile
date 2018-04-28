@@ -1,4 +1,5 @@
 node ('master') {
+    withEnv([$DOCKER_COMPOSE=/usr/local]){
     cleanWs()
     stage('checkout scm'){
         checkout scm
@@ -9,7 +10,7 @@ node ('master') {
         #!/bin/bash -l
         printenv 
         echo $PATH 
-        docker-compose --version
+        $DOCKER_COMPOSE/docker-compose --version
         """
 
     }
@@ -22,9 +23,9 @@ node ('master') {
     }
     stage('docker-compose down'){
     	sh """
-        docker-compose down
+        $DOCKER_COMPOSE/docker-compose down
         """
 
-
+    }
     }
 }
