@@ -5,21 +5,24 @@ node ('master') {
        
     }
     stage('docker-compose up'){
-        sh '''printenv 
+        sh """printenv 
         echo $PATH 
         docker-compose --version
-           '''
+        """
 
     }
     stage('test'){
         
-    	sh '''ls -la'''
+    	sh """
+        ls -la
+        """
         
     }
     stage('docker-compose down'){
-    	sh '''
+    	sh """
         docker-compose down
-        '''
+        """
+
 
     }
 }
