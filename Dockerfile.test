@@ -2,9 +2,9 @@ FROM python:3.6
 
 LABEL maintainer "rus4ca@gmail.com"
 
-ARG PROJECT_PATH
+ARG PROJECT_PATH=/tmp/app
 VOLUME $PROJECT_PATH
-WORKDIR /tmp/app
+WORKDIR $PROJECT_PATH
 
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
 RUN apt-get install -y wget xvfb unzip
