@@ -1,6 +1,6 @@
 node ('master') {
-    withEnv([$DOCKER_COMPOSE=/usr/local]){
     cleanWs()
+    withEnv([$DOCKER_COMPOSE=/usr/local]){
     stage('checkout scm'){
         checkout scm
        
