@@ -5,7 +5,9 @@ node ('master') {
        
     }
     stage('docker-compose up'){
-        sh """printenv 
+        sh """
+        #!/bin/bash -e
+        printenv 
         echo $PATH 
         docker-compose --version
         """
