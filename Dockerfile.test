@@ -2,6 +2,8 @@ FROM python:3.6
 
 LABEL maintainer "rus4ca@gmail.com"
 
+ARG PROJECT_PATH
+VOLUME $PROJECT_PATH
 WORKDIR /tmp/app
 
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver

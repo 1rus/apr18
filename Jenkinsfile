@@ -6,22 +6,22 @@ node ('master') {
     }
     stage('docker-compose up'){
         sh """
-        #!/bin/bash -l
-        printenv 
-        echo $PATH 
         docker-compose --version
+        docker-compose -p APR18 up --build
         """
 
     }
     stage('test'){
         
     	sh """
-        ls -la
+        docker-compose run apr18 . /tmp/venv/bin/activate
+        docker-compose run apr18 python -m pytest frame-test --junitxml=results.xml
         """
         
     }
     stage('docker-compose down'){
     	sh """
+        junit 'results.xml'
         docker-compose down
         """
 
