@@ -15,7 +15,7 @@ services:
   apr18:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.test
       args:
         - PROJECT_PATH=$PROJECT_PATH
       volumes:

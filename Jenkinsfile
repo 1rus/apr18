@@ -7,7 +7,7 @@ node ('master') {
     stage('docker-compose up'){
         sh """
         docker-compose --version
-        docker-compose -p APR18 up --build
+        docker-compose -p APR18TEST up --build
         """
 
     }
