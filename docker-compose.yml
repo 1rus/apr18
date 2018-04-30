@@ -12,8 +12,6 @@ services:
     image: selenium/node-chrome
     links:
       - hub
-        volumes:
-      - /dev/shm:/dev/shm
   apr18:
     build:
       context: .
