@@ -19,7 +19,7 @@ services:
       args:
         - PROJECT_PATH=$PROJECT_PATH
     volumes:
-      - ".":$PROJECT_PATH
+      - {WORKSPACE}/output:$PROJECT_PATH/output
     depends_on:
       - hub
       - chromenode
