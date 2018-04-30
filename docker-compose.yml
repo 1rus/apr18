@@ -15,11 +15,11 @@ services:
   apr18:
     build:
       context: .
-      dockerfile: Dockerfile
-      args:
-        - PROJECT_PATH=$PROJECT_PATH
-      volumes:
-        - .:$PROJECT_PATH
+      dockerfile: Dockerfile.test
+    args:
+      - PROJECT_PATH=$PROJECT_PATH
+    volumes:
+      - .:$PROJECT_PATH
     depends_on:
       - hub
       - chromenode
