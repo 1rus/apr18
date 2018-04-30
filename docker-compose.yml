@@ -12,13 +12,15 @@ services:
     image: selenium/node-chrome
     links:
       - hub
+        volumes:
+      - /dev/shm:/dev/shm
   apr18:
     build:
       context: .
-      dockerfile: Dockerfile.test
-      args:
+      dockerfile: Dockerfile
+    args:
         - PROJECT_PATH=$PROJECT_PATH
-      volumes:
+    volumes:
         - .:$PROJECT_PATH
     depends_on:
       - hub
