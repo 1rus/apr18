@@ -9,9 +9,9 @@ WORKDIR PROJECT_PATH
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
 
 # Update the package list and install chrome
-RUN apt-get -y update
+RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get install -y \
-	google-chrome-stable \
+	google-chrome-stable \ 
     wget \
     xvfb \
     unzip
