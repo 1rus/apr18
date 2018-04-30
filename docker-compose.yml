@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 services:
   hub:
     image: selenium/hub
@@ -16,8 +16,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.test
-    args:
-      - PROJECT_PATH=$PROJECT_PATH
+      args:
+        - PROJECT_PATH=$PROJECT_PATH
     volumes:
       - .:$PROJECT_PATH
     depends_on:
