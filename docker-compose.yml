@@ -18,10 +18,7 @@ services:
       dockerfile: Dockerfile.test
       args:
         - PROJECT_PATH=$PROJECT_PATH
-    volumes:
-      - {WORKSPACE}/output:$PROJECT_PATH/output
     depends_on:
       - hub
       - chromenode
       - firefoxnode
-
