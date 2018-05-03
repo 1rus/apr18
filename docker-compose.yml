@@ -20,4 +20,5 @@ services:
       - hub
       - chromenode
       - firefoxnode
-
+    volumes:
+      - {WORKSPACE}/output:/output
