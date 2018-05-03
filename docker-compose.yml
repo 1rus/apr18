@@ -16,9 +16,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.test
-      args:
-        - PROJECT_PATH=$PROJECT_PATH
     depends_on:
       - hub
       - chromenode
       - firefoxnode
+
