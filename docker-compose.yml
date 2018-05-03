@@ -1,4 +1,6 @@
 version: "3.0"
+volumes:
+  output:
 services:
   hub:
     image: selenium/hub
@@ -21,4 +23,6 @@ services:
       - chromenode
       - firefoxnode
     volumes:
-      - {WORKSPACE}/output:/output
+      - type: volume
+        source: {WORKSPACE}/output
+        target: /output
